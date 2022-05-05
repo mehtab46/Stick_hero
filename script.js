@@ -167,14 +167,6 @@ Array.prototype.last = function () {
       return;
     }
   });
-   window.addEventListener("toggle", function (event) {
-    if (event.key == " ") {
-      event.preventDefault();
-      resetGame();
-      return;
-    }
-  });
-  
   window.addEventListener("mousedown", function (event) {
     if (phase == "waiting") {
       lastTimestamp = undefined;
@@ -183,7 +175,7 @@ Array.prototype.last = function () {
       window.requestAnimationFrame(animate);
     }
   });
-  window.addEventListener("touchmove", function (event) {
+  window.addEventListener("touchstart", function (event) {
     if (phase == "waiting") {
       lastTimestamp = undefined;
       introductionElement.style.opacity = 0;
@@ -193,6 +185,11 @@ Array.prototype.last = function () {
   });
   
   window.addEventListener("mouseup", function (event) {
+    if (phase == "stretching") {
+      phase = "turning";
+    }
+  });
+  window.addEventListener("touchend", function (event) {
     if (phase == "stretching") {
       phase = "turning";
     }
