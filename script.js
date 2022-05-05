@@ -194,9 +194,7 @@ Array.prototype.last = function () {
       phase = "turning";
     }
   });
-  window.getElementById("introduction").addEventListener("touchstart", function(event){
-  event.preventDefault()
-});
+  
   window.addEventListener("resize", function (event) {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
