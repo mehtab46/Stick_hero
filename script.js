@@ -167,8 +167,23 @@ Array.prototype.last = function () {
       return;
     }
   });
+   window.addEventListener("toggle", function (event) {
+    if (event.key == " ") {
+      event.preventDefault();
+      resetGame();
+      return;
+    }
+  });
   
   window.addEventListener("mousedown", function (event) {
+    if (phase == "waiting") {
+      lastTimestamp = undefined;
+      introductionElement.style.opacity = 0;
+      phase = "stretching";
+      window.requestAnimationFrame(animate);
+    }
+  });
+  window.addEventListener("touchmove", function (event) {
     if (phase == "waiting") {
       lastTimestamp = undefined;
       introductionElement.style.opacity = 0;
