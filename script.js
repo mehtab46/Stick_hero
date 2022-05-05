@@ -194,7 +194,11 @@ Array.prototype.last = function () {
       phase = "turning";
     }
   });
-  
+  window.ontouchstart = function(event) {
+    if (event.touches.length>1) { //If there is more than one touch
+        event.preventDefault();
+    }
+}
   window.addEventListener("resize", function (event) {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
